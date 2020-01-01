@@ -2,7 +2,7 @@ package exo018;
 
 import java.util.Scanner;
 
-public class Exo018_EZCalculette {
+public class Exo022_EZCalculette {
 
 	// mini calculette
 

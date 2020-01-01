@@ -2,7 +2,7 @@ package exo018;
 
 import java.util.Arrays;
 
-public class Exo018_ArraySort {
+public class Exo020_ArraySort {
 
 	// ArraySort
 

@@ -2,7 +2,7 @@ package exo018;
 
 import java.util.Arrays;
 
-public class Exo018_ArraySum {
+public class Exo021_ArraySum {
 
 	// ArraySum
 

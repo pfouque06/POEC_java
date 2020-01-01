@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import javax.print.attribute.IntegerSyntax;
 
-public class Exo018_ArrayFillAndSearch {
+public class Exo019_ArrayFillAndSearch {
 
 	// ArrayFillAndDisplay
 
