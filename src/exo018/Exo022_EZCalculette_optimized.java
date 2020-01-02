@@ -19,6 +19,8 @@ public class Exo022_EZCalculette_optimized {
 				buffer = "";
 			}
 		} while ( buffer.isEmpty() );
+
+		//scan.close();
 		return Integer.valueOf(buffer);
 		//return Double.valueOf(buffer);
 	}
@@ -37,6 +39,8 @@ public class Exo022_EZCalculette_optimized {
 				buffer = "";
 			}
 		} while ( buffer.isEmpty() );
+
+		//scan.close();
 		//return Integer.valueOf(buffer);
 		return Double.valueOf(buffer);
 	}
@@ -53,13 +57,15 @@ public class Exo022_EZCalculette_optimized {
 				buffer = "";
 			}
 		} while (buffer.isEmpty());
+
+		//scan.close();
 		return buffer;
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		Scanner scan = new Scanner(System.in);
+		//Scanner scan = new Scanner(System.in);
 		String buffer = "";
 		int[] nb = {0,0};
 		do {
@@ -79,7 +85,6 @@ public class Exo022_EZCalculette_optimized {
 
 			if (!buffer.equals("0")) {
 
-				String nb_ = "";
 				System.out.println();
 				nb[0] = scanInt("Entrez le nombre a : ");
 				//System.out.println("nb 1="+nb[0]);
@@ -102,7 +107,7 @@ public class Exo022_EZCalculette_optimized {
 					break;
 				case "4":
 					if (nb[1]== 0 ) {
-						System.out.println("\tERROR : le nombre 2 est nul, division par 0 est impossible");
+						System.out.println("\tERROR : le nombre b est nul, division par 0 est impossible");
 						break;
 					}
 					float div = (float) nb[0] / nb[1];
@@ -110,7 +115,7 @@ public class Exo022_EZCalculette_optimized {
 					break;
 				case "5":
 					if (nb[1]== 0 ) {
-						System.out.println("\tERROR : le nombre 2 est nul, division par 0 est impossible");
+						System.out.println("\tERROR : le nombre b est nul, division par 0 est impossible");
 						break;
 					}
 					int modulo = nb[0] % nb[1];
@@ -118,7 +123,7 @@ public class Exo022_EZCalculette_optimized {
 					break;
 				case "6":
 					float average = (float) (nb[0] + nb[1]) / 2;
-					System.out.println("\t( " + nb[0] + " + " + nb[1] + " ) / 2 = " + average);
+					System.out.println("\t( " + nb[0] + " + " + nb[1] + " ) / 2 = " + String.format("%.2f",average));
 					break;
 				default:
 					System.out.println("choix invalide");
@@ -127,7 +132,7 @@ public class Exo022_EZCalculette_optimized {
 		} while (!buffer.equals("0"));
 
 		System.out.println("\texiting...");
-		scan.close();
+		//scan.close();
 	}
 
 }
