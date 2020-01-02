@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -108,14 +109,28 @@ public class Fenetre extends JFrame implements ActionListener {
 		System.out.println("aButtons[10.getSize() = " + aButtons[0].getSize());
 		
 		// On initialise le JLabel
-		Font police = new Font("DS-digital", Font.TYPE1_FONT, 20);
-		//Font police = new Font("SEGMENT14", Font.PLAIN , 20);
-		//Font police = new Font("LEDFONT", Font.PLAIN , 20);
+		//Font police = new Font("DS-digital", Font.TYPE1_FONT, 20);
+		//Font police = new Font("Segment14", Font.PLAIN, 25);
+		//Font police = new Font("ledfont-sharp", Font.BOLD , 20);
+		Font police = null;
+		File fileFont;
+		try {
+			fileFont = new File("font/ledfont-sharp-Regular.otf");
+			System.out.println(fileFont.getAbsolutePath());
+			police = Font.createFont(Font.TRUETYPE_FONT, fileFont);
+			//police = police.deriveFont((float)20);
+			police = police.deriveFont(Font.BOLD, (float)20);
+		} catch(Exception ex) {
+		    System.err.println(ex.getMessage());
+		};
+
 		label.setFont(police);
 		label.setBorder(new LineBorder(Color.black, 1));
 		label.setHorizontalAlignment(JLabel.RIGHT);
+		//label.setBackground(Color.white);
 		labelPan.setLayout(new BorderLayout());
-		labelPan.setBorder(new EmptyBorder(5, 5, 0, 5));
+		labelPan.setBorder(new EmptyBorder(3, 3, 3, 3));
+		labelPan.setBackground(Color.white);
 		labelPan.add(label);
 
 		// On initialise le container panel de la JFrame
