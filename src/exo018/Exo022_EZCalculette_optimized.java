@@ -11,12 +11,34 @@ public class Exo022_EZCalculette_optimized {
 		do {
 			System.out.print(pLabel);
 			buffer = scan.nextLine();
+			// buffer.matches("(^0?[1-9]$)|(^1[0-2]$)|^$")));	// wait int from 1 to 12 or empty
+			// buffer.matches("-?\\d*"))); 						// wait int
+			// buffer.matches("-?\\d*[.]?\\d*")));				// wait double
 			if (!buffer.matches("-?\\d+")) {
 				System.out.println("\tvaleur invalide, veuillez entrer un entier");
 				buffer = "";
 			}
 		} while ( buffer.isEmpty() );
 		return Integer.valueOf(buffer);
+		//return Double.valueOf(buffer);
+	}
+
+	static double scanDouble(String pLabel) {
+		Scanner scan = new Scanner(System.in);
+		String buffer = "";
+		do {
+			System.out.print(pLabel);
+			buffer = scan.nextLine();
+			// buffer.matches("(^0?[1-9]$)|(^1[0-2]$)|^$")));	// wait int from 1 to 12 or empty
+			// buffer.matches("-?\\d*"))); 						// wait int
+			// buffer.matches("-?\\d*[.]?\\d*")));				// wait double
+			if (!buffer.matches("-?\\d*[.]?\\d*")) {
+				System.out.println("\tvaleur invalide, veuillez entrer un entier");
+				buffer = "";
+			}
+		} while ( buffer.isEmpty() );
+		//return Integer.valueOf(buffer);
+		return Double.valueOf(buffer);
 	}
 
 	static String scanMatchedBuffer(String pLabel, String pMatch) {
@@ -33,7 +55,6 @@ public class Exo022_EZCalculette_optimized {
 		} while (buffer.isEmpty());
 		return buffer;
 	}
-
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -60,29 +81,8 @@ public class Exo022_EZCalculette_optimized {
 
 				String nb_ = "";
 				System.out.println();
-//				do {
-//					System.out.print("Entrez le nombre a : ");
-//					nb_ = scan.nextLine();
-//					if (!nb_.matches("-?\\d+")) {
-//						System.out.println("\tvaleur invalide");
-//						nb_ = "";
-//					}
-//				} while ( nb_.isEmpty() );
-//				nb[0] = Integer.valueOf(nb_);
 				nb[0] = scanInt("Entrez le nombre a : ");
 				//System.out.println("nb 1="+nb[0]);
-
-				//System.out.println();
-//				do {
-//					System.out.print("Entrez le nombre b : ");
-//					nb_ = scan.nextLine();
-//					if (!nb_.matches("-?\\d+")) {
-//						System.out.println("\tvaleur invalide");
-//						nb_ = "";
-//					}
-//				} while ( nb_.isEmpty() );
-//				// } while (!(buffer.matches("-+[a-zA-Z]*") || buffer.isEmpty()));
-//				nb[1] = Integer.valueOf(nb_);
 				nb[1] = scanInt("Entrez le nombre b : ");
 				//System.out.println("nb 2="+nb[1]);
 
@@ -129,4 +129,5 @@ public class Exo022_EZCalculette_optimized {
 		System.out.println("\texiting...");
 		scan.close();
 	}
+
 }

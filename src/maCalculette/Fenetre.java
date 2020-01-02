@@ -39,8 +39,8 @@ public class Fenetre extends JFrame implements ActionListener {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setResizable(true);
-		//this.setSize(245, 170);
-		this.setSize(290, 210);
+		//this.setSize(290, 210); // Home setting
+		this.setSize(310, 220);
 		this.setAlwaysOnTop(true);
 
 		// init Digit Keyboard Buttons

@@ -8,7 +8,7 @@ public class Exo024_SwapSubstring {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		// template sentence to convefrt : "python python is more popular than java java";
+		// template sentence to convert : "python python is more popular than java java";
 		Scanner scan = new Scanner(System.in);
 		String buffer = "", str1 = "", str2 = "";
 		String[][] swapStrings = {{"python", "java"},{"java", "python"}};
