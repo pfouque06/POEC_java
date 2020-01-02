@@ -24,11 +24,14 @@ public class Fenetre extends JFrame implements ActionListener {
 	private JPanel labelPan = new JPanel();
 	private JLabel label = new JLabel("0");
 	private JPanel keyboardPan = new JPanel();
-	private String[] kNames = { "7", "8", "9", "4", "5", "6", "1", "2", "3", "0", ".", "C"};
+	//private String[] kNames = { "7", "8", "9", "4", "5", "6", "1", "2", "3", "0", ".", "C"};
+	private String[] kNames = { "7", "8", "9", "4", "5", "6", "1", "2", "3", "0", ".", "<"};
 	private JButton[] kButtons = new JButton[12];
 	private JPanel ActionPan = new JPanel();
-	private String[] aNames = { "/", "%", "x", "MS", "-", "MC", "+", "="};
+	//private String[] aNames = { "/", "%", "x", "MS", "-", "MC", "+", "="};
+	private String[] aNames = { "/", "C", "x", "MC", "-", "MS", "+", "="};
 	private JButton[] aButtons = new JButton[8];
+	int indexMS = 0;
 
 	private Calculette calculette;
 
@@ -46,7 +49,7 @@ public class Fenetre extends JFrame implements ActionListener {
 
 		// init Digit Keyboard Buttons
 		keyboardPan.setPreferredSize(new Dimension(165, 225));
-		Dimension dim = new Dimension(45, 30);
+		Dimension dim = new Dimension(50, 30);
 		Font kFont = new Font("DS-digital", Font.TYPE1_FONT, 15);
 		//Font kFont = new Font("Goudy Bookletter 1911", Font.TYPE1_FONT, 15);
 		// Goudy Bookletter 1911
@@ -62,6 +65,8 @@ public class Fenetre extends JFrame implements ActionListener {
 		Dimension aDim = new Dimension(55, 30);
 		//Font aFont = new Font("Dialog", Font.BOLD, 12); //PLAIN , ITALIC, 
 		for (int indexCell = 0; indexCell < aNames.length ; indexCell++) {
+			if (aNames[indexCell].equals("MS"))
+				indexMS = indexCell;
 			aButtons[indexCell] = new JButton(aNames[indexCell]);
 			aButtons[indexCell].setPreferredSize(aDim);
 			//aButtons[indexCell].setFont(kFont);
@@ -129,7 +134,7 @@ public class Fenetre extends JFrame implements ActionListener {
 		label.setHorizontalAlignment(JLabel.RIGHT);
 		//label.setBackground(Color.white);
 		labelPan.setLayout(new BorderLayout());
-		labelPan.setBorder(new EmptyBorder(3, 3, 3, 3));
+		labelPan.setBorder(new EmptyBorder(2, 2, 2, 2));
 		labelPan.setBackground(Color.white);
 		labelPan.add(label);
 
@@ -155,7 +160,7 @@ public class Fenetre extends JFrame implements ActionListener {
 			
 			public void update(boolean pBoolean) {
 				// TODO Auto-generated method stub
-				aButtons[3].setForeground((pBoolean ? Color.blue : Color.black));
+				aButtons[indexMS].setForeground((pBoolean ? Color.blue : Color.black));
 			}
 		});
 		

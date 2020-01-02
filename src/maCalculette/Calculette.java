@@ -50,6 +50,7 @@ public class Calculette implements Observed {
 		case "7":
 		case "8":
 		case "9":
+		case "<":
 			keyboardClic(buttonTitle);
 			break;
 		case "+":
@@ -99,6 +100,14 @@ public class Calculette implements Observed {
 		case "8":
 		case "9":
 			input += buttonTitle;
+			break;
+		case "<":
+			if ( input.isEmpty()) {
+				if (display.isEmpty())
+					break;
+				input = display;
+			}
+			input = input.substring(0, input.length() - 1 );
 			break;
 		}
 		display = input; // update Frame
