@@ -30,6 +30,34 @@ public class Exo033_TP_InternetAccessCost {
 		return cost;
 	}
 
+	static int calculateCost2(int pStart, int pEnd) {
+
+		int delay = pEnd - pStart;
+		int delayT1 = 0, delayT2 = 0, cost = 0 ;
+		for (int index = pStart; index < pEnd; index ++) {
+			if (index >= 7 && index < 17)
+				delayT1++;
+		}
+		delayT2 = delay - delayT1;
+		cost = delayT1  + delayT2 *2;
+		return cost;
+	}
+
+	static int calculateCost3(int pStart, int pEnd) {
+
+		int delay = pEnd - pStart;
+		int delayT1 = 0, delayT2 = 0, cost = 0 ;
+		for (int index = pStart; index < pEnd; index ++) {
+			if (index >= 7 && index < 17)
+				delayT1++;
+			else
+				delayT2++;
+		}
+		//delayT2 = delay - delayT1;
+		cost = delayT1  + delayT2 *2;
+		return cost;
+	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		String buffer = "";
@@ -52,7 +80,11 @@ public class Exo033_TP_InternetAccessCost {
 			// tarif 2 : 0- 7h, 17h-24h 2€/h
 			int last = endTime - startTime;
 			int cost = calculateCost(startTime, endTime);
-			System.out.println("Vous avez été connecté " + last + " heures pour " + cost + " Euros");
+			System.out.println("1- Vous avez été connecté " + last + " heures pour " + cost + " Euros");
+			cost = calculateCost2(startTime, endTime);
+			System.out.println("2- Vous avez été connecté " + last + " heures pour " + cost + " Euros");
+			cost = calculateCost3(startTime, endTime);
+			System.out.println("3- Vous avez été connecté " + last + " heures pour " + cost + " Euros");
 			System.out.println();
 			//buffer = ScanTools.scanMatchedBuffer("Replay (Oui/Non) ?", "[ON]|^$"); // O, N ou empty
 			buffer = ScanTools.scanMatchedBuffer("Replay (O/N) ?", ".*"); // O, N ou empty
