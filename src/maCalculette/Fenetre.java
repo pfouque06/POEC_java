@@ -130,11 +130,13 @@ public class Fenetre extends JFrame implements ActionListener {
 		};
 
 		label.setFont(police);
-		label.setBorder(new LineBorder(Color.black, 1));
+		//label.setBorder(new LineBorder(Color.black, 1));
+		label.setBorder(new EmptyBorder(4, 4, 4, 4));
 		label.setHorizontalAlignment(JLabel.RIGHT);
 		//label.setBackground(Color.white);
 		labelPan.setLayout(new BorderLayout());
-		labelPan.setBorder(new EmptyBorder(2, 2, 2, 2));
+		labelPan.setBorder(new LineBorder(Color.darkGray, 1));
+		//labelPan.setBorder(new EmptyBorder(2, 2, 2, 2));
 		labelPan.setBackground(Color.white);
 		labelPan.add(label);
 
