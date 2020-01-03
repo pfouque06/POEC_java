@@ -2,7 +2,7 @@ package exo029;
 
 import java.util.Scanner;
 
-public class exo030_getSeason {
+public class Exo030_getSeason {
 
 	static String getSeason(int pSeason) {
 		switch (pSeason) {

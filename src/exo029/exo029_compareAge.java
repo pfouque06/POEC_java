@@ -1,6 +1,6 @@
 package exo029;
 
-public class exo029_compareAge {
+public class Exo029_compareAge {
 
 	static String getClasseAge(String pName, int pAge) {
 		if ( pAge < 10 ) 
