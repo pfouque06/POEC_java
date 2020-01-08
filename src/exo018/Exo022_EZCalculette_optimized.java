@@ -38,47 +38,46 @@ public class Exo022_EZCalculette_optimized {
 
 		String[] valueNames = {"a","b"};
 		int[] values = new int[2];
-		System.out.println();
 
 		System.out.println();
 		switch (pAction) {
 		case "1":
 			values = scanIntArray(valueNames);
 			int sum = values[0] + values[1];
-			System.out.println("\t" + values[0] + " + " + values[1] + " = " + sum);
+			System.out.println("\n\t" + values[0] + " + " + values[1] + " = " + sum);
 			break;
 		case "2":
 			values = scanIntArray(valueNames);
 			int diff = values[0] - values[1];
-			System.out.println("\t" + values[0] + " - " + values[1] + " = " + diff);
+			System.out.println("\n\t" + values[0] + " - " + values[1] + " = " + diff);
 			break;
 		case "3":
 			values = scanIntArray(valueNames);
 			int mult = values[0] * values[1];
-			System.out.println("\t" + values[0] + " x " + values[1] + " = " + mult);
+			System.out.println("\n\t" + values[0] + " x " + values[1] + " = " + mult);
 			break;
 		case "4":
 			values = scanIntArray(valueNames);
 			if (values[1] == 0) {
-				System.out.println("\tERROR : le nombre b est nul, division par 0 est impossible");
+				System.out.println("\n\tERROR : le nombre b est nul, division par 0 est impossible");
 				break;
 			}
 			float div = (float) values[0] / values[1];
-			System.out.println("\t" + values[0] + " / " + values[1] + " = " + String.format("%.2f", div));
+			System.out.println("\n\t" + values[0] + " / " + values[1] + " = " + String.format("%.2f", div));
 			break;
 		case "5":
 			values = scanIntArray(valueNames);
 			if (values[1] == 0) {
-				System.out.println("\tERROR : le nombre b est nul, division par 0 est impossible");
+				System.out.println("\n\tERROR : le nombre b est nul, division par 0 est impossible");
 				break;
 			}
 			int modulo = values[0] % values[1];
-			System.out.println("\t" + values[0] + " % " + values[1] + " = " + modulo);
+			System.out.println("\n\t" + values[0] + " % " + values[1] + " = " + modulo);
 			break;
 		case "6":
 			values = scanIntArray(valueNames);
 			float average = (float) (values[0] + values[1]) / 2;
-			System.out.println("\t( " + values[0] + " + " + values[1] + " ) / 2 = " + String.format("%.2f", average));
+			System.out.println("\n\t( " + values[0] + " + " + values[1] + " ) / 2 = " + String.format("%.2f", average));
 			break;
 		default:
 			System.out.println("choix invalide");
