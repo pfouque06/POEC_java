@@ -73,6 +73,10 @@ public class ScanTools {
 			System.out.print(pLabel);
 			buffer = scan.nextLine();
 			if (buffer.matches(pMatch)) {
+				// . : any character
+				// .? : zero or one any character
+				// .* : zero or any character
+				// .+ : one or any character
 				// [a-zA-Z] : character in the range ..
 				// [a-zA-Z]? : zero or one character in the range ..
 				// [a-zA-Z]* : zero or more character in the range ..
