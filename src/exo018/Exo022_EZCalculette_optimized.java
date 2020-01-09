@@ -12,7 +12,7 @@ public class Exo022_EZCalculette_optimized {
 		int[] values = new int[2];
 		String valueName = "";
 		for (int index = 0; index < pNames.length; index++) {
-			valueName = ( pNames[index].isEmpty() ? String.valueOf(index) : pNames[index]);
+			valueName = (pNames[index].isEmpty() ? String.valueOf(index) : pNames[index]);
 			values[index] = ScanTools.scanInt("Entrez le nombre " + valueName + " : ");
 			// System.out.println("values["+index+"]="+values[index]+" \""+valueName+"\"");
 		}
@@ -30,13 +30,16 @@ public class Exo022_EZCalculette_optimized {
 		System.out.println("\t4. Diviser deux nombres");
 		System.out.println("\t5. \"Moduler\" deux nombres ;-)");
 		System.out.println("\t6. Calculer la moyenne de deux nombres, so what ??");
+		System.out.println("\t7. Calculer la racine carré de deux nombres :");
+		System.out.println("\t8. Calculer le demi gap de deux nombre");
+		System.out.println("\t9. Quelle est la théorie des graphes ?");
 		System.out.println("\t0. quitter");
 		System.out.println();
 	}
 
 	static void processAction(String pAction) {
 
-		String[] valueNames = {"a","b"};
+		String[] valueNames = { "a", "b" };
 		int[] values = new int[2];
 
 		System.out.println();
@@ -79,6 +82,35 @@ public class Exo022_EZCalculette_optimized {
 			float average = (float) (values[0] + values[1]) / 2;
 			System.out.println("\n\t( " + values[0] + " + " + values[1] + " ) / 2 = " + String.format("%.2f", average));
 			break;
+		case "7":
+			values[0] = ScanTools.scanInt("Entrez le nombre " + valueNames[0] + " : ");
+			int x = values[0] * values[0];
+			System.out.println(" la racine carré de " + values[0] + " = " + x);
+			break;
+		case "8":
+			values = scanIntArray(valueNames);
+			float halfgap = (float) (values[0] - values[1]) / 2;
+			System.out.println("\t( " + values[0] + " - " + values[1] + " ) / 2 = " + String.format("%.2f", halfgap));
+			break;
+		case "9":
+			System.out.println(
+					"La théorie des graphes est la discipline mathématique et informatique qui étudie les graphes, \n"
+							+ "lesquels sont des modèles abstraits de dessins de réseaux reliant des objets1. Ces modèles sont \n"
+							+ "constitués par la donnée de sommets (aussi appelés nœuds ou points, en référence aux polyèdres), \n"
+							+ "ùet d'arêtes (aussi appelées liens ou lignes) entre ces sommet; ces arêtes sont parfois \n"
+							+ "non-symétriques (les graphes sont alors dits orientés) et sont appelés des flèches.\r\n"
+							+ "\r\n"
+							+ "Les algorithmes élaborés pour résoudre des problèmes concernant les objets de cette théorie \n"
+							+ "ont de nombreuses applications dans tous les domaines liés à la notion de réseau (réseau social, \n"
+							+ "réseau informatique, télécommunications, etc.) et dans bien d'autres domaines (par exemple \n"
+							+ "génétique) tant le concept de graphe, à peu près équivalent à celui de relation binaire \n"
+							+ "(à ne pas confondre donc avec graphe d'une fonction), est général. De grands théorèmes difficiles, \n"
+							+ "comme le théorème des quatre couleurs, le théorème des graphes parfaits, ou encore le théorème \n"
+							+ "de Robertson-Seymour, ont contribué à asseoir cette matière auprès des mathématiciens, \n"
+							+ "et les questions qu'elle laisse ouvertes, comme la conjecture de Hadwiger, en font une branche \n"
+							+ "vivace des mathématiques discrètes. \n");
+			ScanTools.scanMatchedBuffer("\t(...)", ".*");
+			break;
 		default:
 			System.out.println("choix invalide");
 		}
@@ -91,7 +123,7 @@ public class Exo022_EZCalculette_optimized {
 		int[] nb = { 0, 0 };
 		do {
 			displayMenu();
-			buffer = ScanTools.scanMatchedBuffer("\tFaites votre choix : ", "[0-6]");
+			buffer = ScanTools.scanMatchedBuffer("\tFaites votre choix : ", "[0-9]");
 			// System.out.println("buffer="+buffer);
 
 			if (!buffer.equals("0")) {
