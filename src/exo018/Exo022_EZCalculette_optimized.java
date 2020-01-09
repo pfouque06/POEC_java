@@ -1,7 +1,5 @@
 package exo018;
 
-import java.util.Scanner;
-
 import scanTools.ScanTools;
 
 // mini calculette
@@ -37,29 +35,29 @@ public class Exo022_EZCalculette_optimized {
 		System.out.println();
 	}
 
-	static void processAction(String pAction) {
+	static void processAction(int buffer) {
 
 		String[] valueNames = { "a", "b" };
 		int[] values = new int[2];
 
 		System.out.println();
-		switch (pAction) {
-		case "1":
+		switch (buffer) {
+		case 1:
 			values = scanIntArray(valueNames);
 			int sum = values[0] + values[1];
 			System.out.println("\n\t" + values[0] + " + " + values[1] + " = " + sum);
 			break;
-		case "2":
+		case 2:
 			values = scanIntArray(valueNames);
 			int diff = values[0] - values[1];
 			System.out.println("\n\t" + values[0] + " - " + values[1] + " = " + diff);
 			break;
-		case "3":
+		case 3:
 			values = scanIntArray(valueNames);
 			int mult = values[0] * values[1];
 			System.out.println("\n\t" + values[0] + " x " + values[1] + " = " + mult);
 			break;
-		case "4":
+		case 4:
 			values = scanIntArray(valueNames);
 			if (values[1] == 0) {
 				System.out.println("\n\tERROR : le nombre b est nul, division par 0 est impossible");
@@ -68,7 +66,7 @@ public class Exo022_EZCalculette_optimized {
 			float div = (float) values[0] / values[1];
 			System.out.println("\n\t" + values[0] + " / " + values[1] + " = " + String.format("%.2f", div));
 			break;
-		case "5":
+		case 5:
 			values = scanIntArray(valueNames);
 			if (values[1] == 0) {
 				System.out.println("\n\tERROR : le nombre b est nul, division par 0 est impossible");
@@ -77,22 +75,22 @@ public class Exo022_EZCalculette_optimized {
 			int modulo = values[0] % values[1];
 			System.out.println("\n\t" + values[0] + " % " + values[1] + " = " + modulo);
 			break;
-		case "6":
+		case 6:
 			values = scanIntArray(valueNames);
 			float average = (float) (values[0] + values[1]) / 2;
 			System.out.println("\n\t( " + values[0] + " + " + values[1] + " ) / 2 = " + String.format("%.2f", average));
 			break;
-		case "7":
+		case 7:
 			values[0] = ScanTools.scanInt("Entrez le nombre " + valueNames[0] + " : ");
 			int x = values[0] * values[0];
 			System.out.println(" la racine carré de " + values[0] + " = " + x);
 			break;
-		case "8":
+		case 8:
 			values = scanIntArray(valueNames);
 			float halfgap = (float) (values[0] - values[1]) / 2;
 			System.out.println("\t( " + values[0] + " - " + values[1] + " ) / 2 = " + String.format("%.2f", halfgap));
 			break;
-		case "9":
+		case 9:
 			System.out.println(
 					"La théorie des graphes est la discipline mathématique et informatique qui étudie les graphes, \n"
 							+ "lesquels sont des modèles abstraits de dessins de réseaux reliant des objets1. Ces modèles sont \n"
@@ -119,19 +117,21 @@ public class Exo022_EZCalculette_optimized {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		String buffer = "";
+		//String buffer = "";
+		int buffer;
 		int[] nb = { 0, 0 };
 		do {
 			displayMenu();
-			buffer = ScanTools.scanMatchedBuffer("\tFaites votre choix : ", "[0-9]");
+			//buffer = ScanTools.scanMatchedBuffer("\tFaites votre choix : ", "[0-9]");
+			buffer = ScanTools.scanIntRange("\tFaites votre choix : ", 0, 9);
 			// System.out.println("buffer="+buffer);
 
-			if (!buffer.equals("0")) {
+			if (buffer != 0) {
 
 				processAction(buffer);
 
 			}
-		} while (!buffer.equals("0"));
+		} while ( buffer != 0);
 
 		System.out.println("\texiting...");
 	}
