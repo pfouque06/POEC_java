@@ -14,6 +14,12 @@ public class Enseignant extends Person {
 		this.hiredDate = hireDate;
 	}
 
+	public Enseignant(String nom, String prenom, Date birthdate, Adresse adresse, long salaire, Date hiredDate) {
+		super(nom, prenom, birthdate, adresse);
+		this.salaire = salaire;
+		this.hiredDate = hiredDate;
+	}
+
 	public long getSalaire() {
 		return salaire;
 	}
@@ -35,6 +41,13 @@ public class Enseignant extends Person {
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		return "Enseignant [ " + super.toString() + ", salaire=" + salaire + ", hiredDate=" + dateFormat.format(hiredDate) + "]";
+	}
+
+
+	@Override
+	public void displayFullName() {
+		// TODO Auto-generated method stub
+		System.out.println("Je suis enseignant : " + this.getNom() + " " +this.getPrenom());
 	}
 	
 }

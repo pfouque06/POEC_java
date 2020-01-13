@@ -3,17 +3,27 @@ package poo_J01;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Person {
+//public abstract class Person  {
+public class Person implements IMiseEnForme {
 
 	private String nom;
 	private String prenom;
 	private Date birthdate;
+	private Adresse adresse;
 
 	public Person(String nom, String prenom, Date birthdate) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.birthdate = birthdate;
+	}
+
+	public Person(String nom, String prenom, Date birthdate, Adresse adresse) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.birthdate = birthdate;
+		this.adresse = adresse;
 	}
 
 	public String getNom() {
@@ -43,7 +53,25 @@ public class Person {
 	@Override
 	public String toString() {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		return "Person [nom=" + nom + ", prenom=" + prenom + ", birthdate=" + dateFormat.format(birthdate) + "]";
+		return "Person [nom=" + nom + ", prenom=" + prenom + ", birthdate=" + dateFormat.format(birthdate) + "," + adresse.toString() + " ]";
 	}
 
+	//public abstract void displayFullName() {
+	public void displayFullName() {
+		System.out.println();
+	}
+
+	@Override
+	public void displayUpperCaseName() {
+		// TODO Auto-generated method stub
+		// System.out.println("Mon nom est " + this.getNom().toUpperCase());
+		System.out.println("Mon nom est " + nom.toUpperCase());
+	}
+
+	@Override
+	public void displayUpperCaseLastName() {
+		// TODO Auto-generated method stub
+		// System.out.println("Mon prénom est " + this.getPrenom().toUpperCase());
+		System.out.println("Mon prénom est " + prenom.toUpperCase());
+	}
 }

@@ -11,6 +11,11 @@ public class Etudiant extends Person {
 		this.niveau = niveau;
 	}
 
+	public Etudiant(String nom, String prenom, Date birthdate, Adresse adresse, String niveau) {
+		super(nom, prenom, birthdate, adresse);
+		this.niveau = niveau;
+	}
+
 	public String getNiveau() {
 		return niveau;
 	}
@@ -22,6 +27,12 @@ public class Etudiant extends Person {
 	@Override
 	public String toString() {
 		return "Etudiant [ " + super.toString() + ", niveau=" + niveau + ", " + "]";
+	}
+
+	@Override
+	public void displayFullName() {
+		// TODO Auto-generated method stub
+		System.out.println("Je suis etudiant: " + this.getNom() + " " +this.getPrenom());
 	}
 
 }

@@ -65,8 +65,11 @@ public class Main {
 //		Livre livre3 = livre1 + livre2;
 		
 		System.out.println("\n------------------------------------------------");
-		Person prof = new Enseignant("Mandolorien", "Damien", new Date("01/01/2000"), 400000, new Date("01/01/2020"));
-		Person Sihem = new Etudiant("Abrot", "Sihem", new Date("01/01/2010"), "maternelle");
+		
+		Adresse addr = new Adresse("rue toto", 06000, "Nice");
+		
+		Person prof = new Enseignant("Mandolorien", "Damien", new Date("01/01/2000"), addr, 400000, new Date("01/01/2020"));
+		Person Sihem = new Etudiant("Abrot", "Sihem", new Date("01/01/2010"), addr, "maternelle");
 		System.out.println(prof);
 		System.out.println(Sihem);
 
@@ -74,10 +77,14 @@ public class Main {
 		List<Person> listPerson = new ArrayList<>();
 		listPerson.add(prof);
 		listPerson.add(Sihem);
-		listPerson.add(new Etudiant("Claquos", "Thierry", new Date("01/01/1901"), "bac+50.000"));
-		listPerson.add(new Etudiant("Chechout", "Philou", new Date("01/01/1002"), "bac-15"));
+		listPerson.add(new Etudiant("Claquos", "Thierry", new Date("01/01/1901"), addr, "bac+50.000"));
+		listPerson.add(new Etudiant("Chechout", "Philou", new Date("01/01/1002"), addr, "bac-15"));
 		
 		listPerson.forEach(System.out::println);
+		listPerson.forEach(Person::displayFullName);
+		listPerson.forEach(Person::displayUpperCaseName);
+		listPerson.forEach(Person::displayUpperCaseLastName);
+		
 
 		System.out.println("\n------------------------------------------------");
 		List<Article> listArticles = new ArrayList<>();
