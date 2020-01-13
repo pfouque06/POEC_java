@@ -26,6 +26,8 @@ public class Book extends Article {
 		return "Book [ " + super.toString() + ", isbn=" + isbn + ", nbPages=" + nbPages + "]";
 	}
 	
-	
+	void lire() {
+		System.out.println(this.getDesignation() + " est en lecture");
+	}
 
 }

@@ -91,12 +91,13 @@ public class Main {
 		Article p1 = new Poche("poche1", 15, "2h2h2gf3f", 174, "roman");
 		Article d1 = new Disque("IAM", 19, "Universal");
 		Article v1 = new Video("Matrix", 14, 150);
-		System.out.println("--------Le livre de poche est achete----------");
+		System.out.println("\n--------Le livre de poche est achete----------");
 		p1.acheter();
-		System.out.println("--------Le disque est achete et ecoute------------------");
+		((Book) p1).lire();
+		System.out.println("\n--------Le disque est achete et ecoute------------------");
 		d1.acheter();
 		((Disque) d1).ecouter();
-		System.out.println("---------La video est achete et lue -----------------");
+		System.out.println("\n---------La video est achete et lue -----------------");
 		v1.acheter();
 		((Video) v1).afficher();
 

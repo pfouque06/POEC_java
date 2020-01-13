@@ -1,6 +1,6 @@
 package poo_J01;
 
-public class Article {
+class Article {
 
 	private String designation;
 	private long prix;
