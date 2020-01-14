@@ -42,9 +42,10 @@ public class Fenetre extends JFrame implements ActionListener {
 		this.setTitle("Calculette");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
-		this.setResizable(true);
 		//this.setSize(290, 210); // Home setting
-		this.setSize(310, 220);
+		this.setSize(300, 220);
+		//this.setResizable(true);
+		this.setResizable(false);
 		this.setAlwaysOnTop(true);
 
 		// init Digit Keyboard Buttons
@@ -120,11 +121,16 @@ public class Fenetre extends JFrame implements ActionListener {
 		Font police = null;
 		File fileFont;
 		try {
-			fileFont = new File("font/ledfont-sharp-Regular.otf");
+			//fileFont = new File("font/ledfont-sharp-Regular.otf");
+			//fileFont = new File("font/PixelOperator-Bold.ttf");
+			//fileFont = new File("font/PixelOperatorHB.ttf");
+			//fileFont = new File("font/PixelOperatorHBSC.ttf");
+			fileFont = new File("font/PixelOperator.ttf");
 			System.out.println(fileFont.getAbsolutePath());
 			police = Font.createFont(Font.TRUETYPE_FONT, fileFont);
 			//police = police.deriveFont((float)20);
-			police = police.deriveFont(Font.BOLD, (float)20);
+			//police = police.deriveFont(Font.BOLD, (float)25);
+			police = police.deriveFont(Font.PLAIN, (float)35);
 		} catch(Exception ex) {
 		    System.err.println(ex.getMessage());
 		};

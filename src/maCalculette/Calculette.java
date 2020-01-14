@@ -99,6 +99,8 @@ public class Calculette implements Observed {
 		case "7":
 		case "8":
 		case "9":
+			if (input.equals("0"))
+				input = ""; // emptying input buffer if only zero char is found
 			input += buttonTitle;
 			break;
 		case "<":
