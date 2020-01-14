@@ -1,6 +1,7 @@
 package ma.tp.projet.classes;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Application {
@@ -9,16 +10,16 @@ public class Application {
 		// TODO Auto-generated method stub
 
 		List<Personne> employes = new ArrayList<>();
-		employes.add(new Employe(0, "Baton", "Jean", 1500));
-		employes.add(new Employe(1, "Garros", "Roland", 100));
+		employes.add(new Employe("Baton", "Jean",  new Date("01/01/2000"), 1500));
+		employes.add(new Employe("Garros", "Roland",  new Date("01/01/2000"), 100));
 
 		List<Personne> etudiants = new ArrayList<>();
-		etudiants.add(new ma.tp.projet.classes.Etudiant(2, "Clire", "Marie", "65678754"));
-		etudiants.add(new ma.tp.projet.classes.Etudiant(3, "Doe", "Thomas", "87543543"));
+		etudiants.add(new ma.tp.projet.classes.Etudiant("Clire", "Marie",  new Date("01/01/2000"), "65678754"));
+		etudiants.add(new ma.tp.projet.classes.Etudiant("Doe", "Thomas",  new Date("01/01/2000"), "87543543"));
 
 		List<Personne> professeurs = new ArrayList<>();
-		professeurs.add(new Professeur(4, "Frey", "Kevin", 5700, "JAVA/JEE"));
-		professeurs.add(new Professeur(5, "Dupont", "Mathieu", 5000, "Mathématique"));
+		professeurs.add(new Professeur("Frey", "Kevin",  new Date("01/01/2000"), 5700, "JAVA/JEE"));
+		professeurs.add(new Professeur("Dupont", "Mathieu",  new Date("01/01/2000"), 5000, "Mathématique"));
 
 		System.out.println();
 		System.out.println("La liste des employes :");

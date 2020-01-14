@@ -1,0 +1,5 @@
+package poo_TP02.bean;
+
+public enum Sport {
+	BASKETBALL, HANDBALL, FOOTBALL, RUGBY, ICEHOCKEY, ROLLERHOCKEY
+}

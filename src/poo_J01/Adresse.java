@@ -10,7 +10,7 @@ public class Adresse {
 		super();
 		this.rue = rue;
 		this.codePostale = codePostale;
-		ville = ville;
+		this.ville = ville;
 	}
 
 	public String getRue() {

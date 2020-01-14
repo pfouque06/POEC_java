@@ -1,15 +1,23 @@
 package ma.tp.projet.classes;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class Personne {
 
 	private int id;
+	private static int count;
 	private String nom, prenom;
+	private Date birthdate;
 
-	public Personne(int id, String nom, String prenom) {
+	public Personne(String nom, String prenom, Date birthdate) {
 		super();
-		this.id = id;
+		this.id = count++;
 		this.nom = nom;
 		this.prenom = prenom;
+		this.birthdate = birthdate;
 	}
 
 	public int getId() {
@@ -38,7 +46,12 @@ public class Personne {
 
 	@Override
 	public String toString() {
-		return "Je suis " + nom.toUpperCase() + " " + prenom.substring(0, 1).toUpperCase() + prenom.substring(1).toLowerCase();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("d MMMM yyyy");
+		String birthdate_ = dateFormat.format(birthdate);
+//		DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, Locale.FRANCE);
+//		String birthdate_ = df.format(birthdate);
+		
+		return "["+id+"] Je suis " + nom.toUpperCase() + " " + prenom.substring(0, 1).toUpperCase() + prenom.substring(1).toLowerCase() + ", né le " + birthdate_;
 	}
 
 }

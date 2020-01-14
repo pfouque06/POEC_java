@@ -1,11 +1,13 @@
 package ma.tp.projet.classes;
 
+import java.util.Date;
+
 public class Etudiant extends Personne {
 
 	private String CNE;
 
-	public Etudiant(int id, String nom, String prenom, String cNE) {
-		super(id, nom, prenom);
+	public Etudiant(String nom, String prenom, Date birthdate, String cNE) {
+		super(nom, prenom, birthdate);
 		CNE = cNE;
 	}
 
@@ -20,7 +22,7 @@ public class Etudiant extends Personne {
 	@Override
 	public String toString() {
 		// return "Etudiant [" + super.toString() + ", CNE=" + CNE + "]";
-		return super.toString() + " mon CNE est: " + CNE;
+		return super.toString() + ", mon CNE est: " + CNE;
 	}
 
 }

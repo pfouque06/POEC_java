@@ -1,7 +1,9 @@
 package poo_J01;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 //public abstract class Person  {
 public class Person implements IMiseEnForme {
@@ -52,8 +54,12 @@ public class Person implements IMiseEnForme {
 
 	@Override
 	public String toString() {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		return "Person [nom=" + nom + ", prenom=" + prenom + ", birthdate=" + dateFormat.format(birthdate) + "," + adresse.toString() + " ]";
+//		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+//		return "Person [nom=" + nom + ", prenom=" + prenom + ", birthdate=" + dateFormat.format(birthdate) + "," + adresse.toString() + " ]";
+		DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, Locale.FRANCE);
+		String date = df.format(birthdate);
+		//return "Person [nom=" + nom + ", prenom=" + prenom + ", birthdate=" + date + "," + adresse.toString() + " ]";
+		return "Person [nom=" + nom + ", prenom=" + prenom + ", birthdate=" + date + "," + adresse.toString() + " ]";
 	}
 
 	//public abstract void displayFullName() {
