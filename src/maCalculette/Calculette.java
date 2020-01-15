@@ -1,5 +1,8 @@
 package maCalculette;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 import observer.Observed;
@@ -7,6 +10,9 @@ import observer.Observer;
 
 public class Calculette implements Observed {
 
+	// logger
+	PrintStream logger = Main.logger;
+	
 	// Nos variables d'environnement locales
 	private String input = "", display = "", action = "", memory = "";
 	private double value = 0;
@@ -15,6 +21,7 @@ public class Calculette implements Observed {
 	private ArrayList<Observer> listObserver = new ArrayList<Observer>();
 
 	public Calculette() {
+
 	}
 
 	public void init() {
@@ -38,6 +45,7 @@ public class Calculette implements Observed {
 
 	public void processAction(String buttonTitle) {
 		// TODO Auto-generated method stub
+		logger.println(">> processAction : " + buttonTitle);
 		switch (buttonTitle) {
 		case ".":
 		case "0":
@@ -74,7 +82,7 @@ public class Calculette implements Observed {
 
 	private void keyboardClic(String buttonTitle) {
 		// TODO Auto-generated method stub
-		System.out.println(">> keyboardClic : " + buttonTitle);
+		logger.println(">> keyboardClic : " + buttonTitle);
 		switch (buttonTitle) {
 		case ".":
 			if (input.isEmpty())
@@ -114,13 +122,13 @@ public class Calculette implements Observed {
 		}
 		display = input; // update Frame
 		this.updateObserver();
-		System.out.println(">> display= " + display + " value= " + value + " action= " + action + " input=" + input);
+		logger.println(">> display= " + display + " value= " + value + " action= " + action + " input=" + input);
 
 	}
 
 	private void actionClic(String buttonTitle) {
 		// TODO Auto-generated method stub
-		System.out.println(">> actionClic");
+		logger.println(">> actionClic");
 
 		if (input.isEmpty())
 			input = display; // set input to display if empty is null
@@ -140,7 +148,7 @@ public class Calculette implements Observed {
 		} else { // operande has been previously set
 			if (!input.isEmpty()) { // process calculation is numeric input is provided
 				double newValue = Double.valueOf(input);
-				System.out.print(">> process : " + value + " " + action + " " + newValue);
+				logger.print(">> process : " + value + " " + action + " " + newValue);
 				switch (action) {
 				case "+":
 					value += newValue;
@@ -153,7 +161,7 @@ public class Calculette implements Observed {
 					break;
 				case "/":
 					if (input.matches("^0+\\.*0*")) {
-						System.out.println(">> actionClic : ERROR : Div/0");
+						logger.println(">> actionClic : ERROR : Div/0");
 						display = "Error"; // update Frame
 						break;
 					}
@@ -161,14 +169,14 @@ public class Calculette implements Observed {
 					break;
 				case "%":
 					if (input.matches("^0+\\.*0*")) {
-						System.out.println(">> actionClic : ERROR : Div/0");
+						logger.println(">> actionClic : ERROR : Div/0");
 						display = "Error"; // update Frame
 						break;
 					}
 					value %= newValue;
 					break;
 				}
-				System.out.println(" = " + value);
+				logger.println(" = " + value);
 				if (!display.equals("Error"))
 					display = String.valueOf(value); // update Frame
 			}
@@ -180,13 +188,13 @@ public class Calculette implements Observed {
 			}
 		}
 		this.updateObserver();
-		System.out.println(">> display= " + display + " value= " + value + " action= " + action + " input=" + input);
+		logger.println(">> display= " + display + " value= " + value + " action= " + action + " input=" + input);
 
 	}
 
 	private void memoryClic(String buttonTitle) {
 		// TODO Auto-generated method stub
-		System.out.println(">> memoryClic : memory= " + memory + " memSet= " + memSet);
+		logger.println(">> memoryClic : memory= " + memory + " memSet= " + memSet);
 		switch (buttonTitle) {
 		case "MC": // Reset memory
 			memory = "";
@@ -207,15 +215,15 @@ public class Calculette implements Observed {
 			break;
 		}
 		this.updateObserver();
-		System.out.println(">> memory= " + memory + " memSet= " + memSet);
-		System.out.println(">> display= " + display + " value= " + value + " action= " + action + " input=" + input);
+		logger.println(">> memory= " + memory + " memSet= " + memSet);
+		logger.println(">> display= " + display + " value= " + value + " action= " + action + " input=" + input);
 	}
 
 	private void resetClic() {
 		// TODO Auto-generated method stub
-		System.out.println(">> resetClic");
+		logger.println(">> resetClic");
 		this.init();
-		System.out.println(">> display= " + display + " value= " + value + " action= " + action + " input=" + input);
+		logger.println(">> display= " + display + " value= " + value + " action= " + action + " input=" + input);
 	}
 
 	// Ajoute un observateur à la liste
@@ -231,7 +239,7 @@ public class Calculette implements Observed {
 	// Avertit les observateurs que l'objet observable a changé
 	// et invoque la méthode update() de chaque observateur
 	public void updateObserver() {
-		// System.out.println("observed inform observer to run an update!! ->");
+		// logger.println("observed inform observer to run an update!! ->");
 		for (Observer obs : this.listObserver) {
 			obs.update(display);
 			obs.update(memSet);

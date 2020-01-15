@@ -6,7 +6,10 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.PrintStream;
+import java.net.URL;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -20,6 +23,10 @@ import observer.Observer;
 
 public class Fenetre extends JFrame implements ActionListener {
 
+	// logger
+	PrintStream logger = Main.logger;
+	
+	// locales
 	private JPanel container = new JPanel();
 	private JPanel labelPan = new JPanel();
 	private JLabel label = new JLabel("0");
@@ -110,9 +117,9 @@ public class Fenetre extends JFrame implements ActionListener {
 		//ActionPan.add(aBox);
 
 		//debug syso
-		//System.out.println("kButtons[0].getSize() = " + kButtons[0].getSize());
-		System.out.println("aButtons[0].getSize() = " + aButtons[0].getFont() );
-		System.out.println("aButtons[10.getSize() = " + aButtons[0].getSize());
+		//logger.println("kButtons[0].getSize() = " + kButtons[0].getSize());
+		logger.println("aButtons[0].getSize() = " + aButtons[0].getFont() );
+		logger.println("aButtons[10].getSize() = " + aButtons[0].getSize());
 		
 		// On initialise le JLabel
 		//Font police = new Font("DS-digital", Font.TYPE1_FONT, 20);
@@ -121,12 +128,23 @@ public class Fenetre extends JFrame implements ActionListener {
 		Font police = null;
 		File fileFont;
 		try {
+			//BufferedWriter writer;
+			String workingDir = new File("").getAbsolutePath();
+			logger.println("workingDir: "+workingDir);
+			//URL resource = Fenetre.class.getResource("/");
+			//logger.println("resource: "+resource);
+			//logger.println("resource.getPath(): "+resource.getPath());
+			String resourceDir = this.getClass().getResource("/").getPath();
+			String classPath = resourceDir.substring(0, resourceDir.lastIndexOf("/bin"));
+			logger.println("classPath: "+classPath);
+			
 			//fileFont = new File("font/ledfont-sharp-Regular.otf");
 			//fileFont = new File("font/PixelOperator-Bold.ttf");
 			//fileFont = new File("font/PixelOperatorHB.ttf");
 			//fileFont = new File("font/PixelOperatorHBSC.ttf");
-			fileFont = new File("font/PixelOperator.ttf");
-			System.out.println(fileFont.getAbsolutePath());
+			//fileFont = new File("font/PixelOperator.ttf");
+			fileFont = new File(classPath + "/" + "font/PixelOperator.ttf");
+			logger.println("fileFont: " + fileFont.getAbsolutePath());
 			police = Font.createFont(Font.TRUETYPE_FONT, fileFont);
 			//police = police.deriveFont((float)20);
 			//police = police.deriveFont(Font.BOLD, (float)25);
@@ -162,7 +180,7 @@ public class Fenetre extends JFrame implements ActionListener {
 		this.calculette.addObserver(new Observer() {
 			
 			public void update(String pString) {
-				// System.out.println("-> Observer is informed by Observed to run an update !");
+				// logger.println("-> Observer is informed by Observed to run an update !");
 				label.setText( (pString.isEmpty()? "0" : pString));
 			}
 			
@@ -179,11 +197,11 @@ public class Fenetre extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		System.out.println(">> actionPerformed");
+		logger.println(">> actionPerformed");
 		//JButton buttonHit= (JButton) arg0.getSource();
 		//String buttonTitle = buttonHit.getName();
 		String buttonTitle = arg0.getActionCommand();
-		System.out.println(">> buttonTitle= " + buttonTitle);
+		logger.println(">> buttonTitle= " + buttonTitle);
 		calculette.processAction(buttonTitle);
 	}
 
