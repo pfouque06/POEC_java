@@ -48,6 +48,14 @@ public class Test {
 		Chercheur chercheur2 = new Chercheur("Mando", "Damien", "12", "abc");
 		System.out.println(chercheur2);
 
+		
+		System.out.println();
+		System.out.println("--- comparaison de chercheurs ---");
+		if (chercheur2.comparer(chercheur1))
+			System.out.println(chercheur2.getNom() + " == "+ chercheur1.getNom());
+		else
+			System.out.println(chercheur2.getNom() + " != "+ chercheur1.getNom());
+			
 		System.out.println();
 		System.out.println("--- liste de chercheur ---");
 		chercheurs.add(chercheur1);
@@ -92,43 +100,11 @@ public class Test {
 		bureaux.forEach(System.out::println);
 
 		System.out.println();
-		System.out.println("--- liste de bureaux ---");
-//		specialites.add(speJJ);
-//		specialites.add(speGP);
-//		specialites.add(speCO);
-//		specialites.add(spePH);
-//		
-//
-//		List<Professeur> professeurs = new ArrayList<>();
-//		professeurs.add(new Professeur("Mandolarian", "Damien", speJJ));
-//		professeurs.add(new Professeur("Mister", "Magoo", speJJ));
-//		professeurs.add(new Professeur("Jackson", "Five", speCO));
-//		professeurs.add(new Professeur("Raoul", "saroule", speCO));
-//		professeurs.add(new Professeur("Relax", "Max", speNT));
-//		professeurs.add(new Professeur("Tranquille", "Emile", speGP));
-//		professeurs.add(new Professeur("Aleze", "Blaise", spePH));
-//		
-//		System.out.println("--- La liste des specialites ---");
-//		System.out.println();
-//		specialites.forEach(System.out::println);
-//
-//		System.out.println();
-//		System.out.println("--- La liste des professeurs ---");
-//		System.out.println();
-//		professeurs.forEach(System.out::println);
-//		//employes.forEach(etudiants::affiche);
-//
-//		System.out.println();
-//		System.out.println("--- La liste des professeurs par Specialite ---");
-//		System.out.println();
-//		for(Specialite speType : specialites) {
-//			System.out.println("Specialite " + speType.getLibelle() + ":");
-//			for(Professeur zozo : professeurs)
-//				//if (zozo.containsSpecialite(speType)) 
-//				if (zozo.getSpecialites().contains(speType)) 
-//					System.out.println(zozo);
-//			System.out.println();
-//		}
+		System.out.println("--- liste de laboratoire ---");
+		laboratoires.add(new Laboratoire("labo", "Java"));
+		laboratoires.get(laboratoires.size() -1).add(bureau1);
+		laboratoires.get(laboratoires.size() -1).add(bureau2);
+		laboratoires.forEach(System.out::println);
 	}
 
 	

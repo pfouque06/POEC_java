@@ -57,16 +57,14 @@ public class Chercheur {
 	}
 
 	public boolean comparer(Chercheur ch) {
-		if (! this.nom.equals(ch.getNom()))
-			return false;
-		if (! this.prenom.equals(ch.getPrenom()))
-			return false;
-		if (! this.poste.equals(ch.getPoste()))
-			return false;
-		if (! this.computerID.equals(ch.getComputerID()))
-			return false;
-		return true;
+		if (this.nom.equals(ch.getNom()))
+			if (this.prenom.equals(ch.getPrenom()))
+				if (this.poste.equals(ch.getPoste()))
+					if (!this.computerID.equals(ch.getComputerID()))
+						return true;
+		return false;
 	}
+
 	@Override
 	public String toString() {
 		return "[" + id + "] Chercheur: nom=" + nom + ", prenom=" + prenom + ", poste=" + poste + ", computerID="

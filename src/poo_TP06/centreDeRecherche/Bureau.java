@@ -11,13 +11,14 @@ public class Bureau {
 	private static int count;
 	private String nom;
 	private String code;
-	private List<Chercheur> chercheurs = new ArrayList<>();
+	private List<Chercheur> chercheurs;
 	private int indexMax = 5;
 
 	public Bureau(String nom, String code) {
 		this.id = count++;
 		this.nom = nom;
 		this.code = code;
+		this.chercheurs = new ArrayList<>();
 	}
 
 	public String getNom() {
@@ -79,7 +80,7 @@ public class Bureau {
 
 	@Override
 	public String toString() {
-		return "[" + id + "] Bureau: nom=" + nom + ", code=" + code + ", chercheurs=\n" + toStringChercheurs() + "]";
+		return "[" + id + "] Bureau: nom=" + nom + ", code=" + code + ", chercheurs=\n" + toStringChercheurs();
 	}
 
 	

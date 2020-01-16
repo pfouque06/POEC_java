@@ -9,13 +9,14 @@ public class Laboratoire {
 	private static int count;
 	private String nom;
 	private String specialite;
-	private List<Bureau> bureaux = new ArrayList<>();
+	private List<Bureau> bureaux;
 	private int indexMax = 50;
 
 	public Laboratoire(String nom, String specialite) {
 		this.id = count++;
 		this.nom = nom;
 		this.specialite = specialite;
+		this.bureaux = new ArrayList<>();
 	}
 
 	public String getNom() {
@@ -67,5 +68,18 @@ public class Laboratoire {
 		return id;
 	}
 
+	public String toStringBureaux() {
+		String bureauList = "";
+		for(Bureau item : this.bureaux )
+			bureauList += (bureauList.isEmpty() ? "" : "\n") + "# " + item.toString();
+		return bureauList;
+	}
+
+	@Override
+	public String toString() {
+		return "[" + id + "] Laboratoire [nom=" + nom + ", specialite=" + specialite + ", bureaux=\n" + toStringBureaux();
+	}
+
+	
 	
 }
