@@ -277,6 +277,28 @@ public class Salaires {
 		employes.getEmployes().add(manutMAR);
 		System.out.println("salaire moyen : " + String.format("%.2f", employes.salaireMoyen()));
 		
+		System.out.println();
+		System.out.println("---- données Prof ----");
+		
+		vendeur.setSalaireCoef(30000);
+		System.out.println(vendeur.getNom() +", salaire: " + vendeur.calculerSalaire());
+	
+		representant.setSalaireCoef(20000);
+		System.out.println(representant.getNom() +", salaire: " + representant.calculerSalaire());
+
+		ouvrier.setSalaireCoef(1000);
+		System.out.println(ouvrier.getNom() +", salaire: " + ouvrier.calculerSalaire());
+		ouvrierMAR.setSalaireCoef(1000);
+		System.out.println(ouvrierMAR.getNom() +", salaire: " + ouvrierMAR.calculerSalaire());
+		
+		manut.setSalaireCoef(45);
+		System.out.println(manut.getNom() +", salaire: " + manut.calculerSalaire());
+		manutMAR.setSalaireCoef(45);
+		System.out.println(manutMAR.getNom() +", salaire: " + manutMAR.calculerSalaire());
+
+		System.out.println();
+		System.out.println("salaire moyen : " + String.format("%.2f", employes.salaireMoyen()));
+
 	}
 
 }
