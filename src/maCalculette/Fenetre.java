@@ -9,7 +9,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -20,12 +19,13 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import logger.Logger;
 import observer.Observer;
 
 public class Fenetre extends JFrame implements ActionListener, KeyListener {
 
 	// logger
-	PrintStream logger = Main.logger;
+	Logger logger = Main.logger;
 
 	// locales
 	private JPanel container = new JPanel();
@@ -35,6 +35,7 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener {
 
 	private String[] kNames = { "7", "8", "9", "4", "5", "6", "1", "2", "3", "0", ".", "<" };
 	private ArrayList<String> kLabels = new ArrayList<String>(Arrays.asList(kNames));
+	private JButton[] kButtons = new JButton[12];
 	// private int[] kKeys = { KeyEvent.VK_7, KeyEvent.VK_8, KeyEvent.VK_9,
 	// KeyEvent.VK_4, KeyEvent.VK_5, KeyEvent.VK_6, KeyEvent.VK_1, KeyEvent.VK_2,
 	// KeyEvent.VK_3, KeyEvent.VK_0, KeyEvent.VK_PERIOD, KeyEvent.VK_BACK_SPACE} ;
@@ -42,140 +43,34 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener {
 	// KeyEvent.VK_QUOTE, KeyEvent.VK_LEFT_PARENTHESIS, KeyEvent.VK_MINUS,
 	// KeyEvent.VK_AMPERSAND, 16777449, KeyEvent.VK_QUOTEDBL, 16777440,
 	// KeyEvent.VK_SEMICOLON, KeyEvent.VK_BACK_SPACE} ;
-	private JButton[] kButtons = new JButton[12];
 
 	private JPanel ActionPan = new JPanel();
 	private String[] aNames = { "/", "C", "x", "MC", "-", "MS", "+", "=" };
 	private ArrayList<String> aLabels = new ArrayList<String>(Arrays.asList(aNames));
+	private JButton[] aButtons = new JButton[8];
 	// private int[] aKeys = { KeyEvent.VK_DOWN, 127, KeyEvent.VK_UP ,
 	// KeyEvent.VK_PAGE_UP, KeyEvent.VK_LEFT, KeyEvent.VK_PAGE_DOWN,
 	// KeyEvent.VK_RIGHT, 10};
 	// private int[] aKeys = { -1, 127, -1, -1, -1, -1, -1, 10};
-	private JButton[] aButtons = new JButton[8];
+
 	int indexMS = 0;
 
 	private Calculette calculette;
 
-	void processKeyPanBinding(String keyPressed) {
+	void processKeytoButtonBinding(String keyPressed) {
+		logger.logging(">> keybindAction.processKeytoButtonBinding(" + keyPressed + ")");
+
+		// check against Digit Pan Buttons
 		if (kLabels.contains(keyPressed))
 			kButtons[kLabels.indexOf(keyPressed)].doClick();
-	}
 
-	void processActionPanBinding(String keyPressed) {
+		// check against action Pan Buttons
 		if (aLabels.contains(keyPressed))
 			aButtons[aLabels.indexOf(keyPressed)].doClick();
 	}
 
-	void processKeytoButtonBinding(String keyPressed) {
-		System.out.println(">> keybindAction.processKeytoButtonBinding(" + keyPressed + ")");
-		switch (keyPressed) {
-		case ".":
-		case "0":
-		case "1":
-		case "2":
-		case "3":
-		case "4":
-		case "5":
-		case "6":
-		case "7":
-		case "8":
-		case "9":
-		case "<":
-			processKeyPanBinding(keyPressed);
-			break;
-		case "+":
-		case "-":
-		case "x":
-		case "/":
-		case "=":
-		case "C":
-		case "MS":
-		case "MC":
-			processActionPanBinding(keyPressed);
-			break;
-		default:
-			break;
-		}
-	}
-
 	public Fenetre() {
 		// TODO Auto-generated constructor stub
-
-//		AbstractAction keybindAction = new AbstractAction() {
-//			@Override
-//			public void actionPerformed(ActionEvent ae) {
-//				//String buttonTitle = "";
-//				String buttonTitle =  ae.getActionCommand();
-//				// special keys decoding
-//				switch((int)buttonTitle.charAt(0)) {
-//				case 8 :			// case backspace -> <
-//					buttonTitle = "<";
-//					break;
-//				case 10 :			// case entrée -> =
-//					buttonTitle = "=";
-//					break;
-//				case 127 :			// case suppr -> C
-//					buttonTitle = "C";
-//					break;
-//				}
-//				// keycode multiplexing
-//				switch(buttonTitle) {
-//				case ";":	// case .
-//					buttonTitle = ".";
-//					break;
-//				// KeyboardPan
-//				case "à":	// case à = 0
-//					buttonTitle = "0";
-//					break;
-//				case "&":	// case 1
-//					buttonTitle = "1";
-//					break;
-//				case "é" : 	// case é = 2
-//					buttonTitle = "2";
-//					break;
-//				case "\"":	// case 3
-//					buttonTitle = "3";
-//					break;
-//				case "'":	// case 4
-//					buttonTitle = "4";
-//					break;
-//				case "(":	// case 5
-//					buttonTitle = "5";
-//					break;
-//				case "-":	// case 6
-//					buttonTitle = "6";
-//					break;
-//				case "è" :	// case è = 7
-//					buttonTitle = "7";
-//					break;
-//				case "_": 	// case 8
-//					buttonTitle = "8";
-//					break;
-//				case "ç":	// case ç = 9
-//					buttonTitle = "9";
-//					break;
-//				// ActionPan
-//				case "=":	// case +
-//					buttonTitle = "+";
-//					break;
-//				case ")":	// case -
-//					buttonTitle = "-";
-//					break;
-//				case "*":	// case x
-//					buttonTitle = "x";
-//					break;
-//				case "ù":	// case /
-//					buttonTitle = "/";
-//					break;
-//				//case "=":	// case = -> CR for default button
-//				//	buttonTitle = "=";
-//				//	break;
-//				}
-//				System.out.println(">> keybindAction.actionPerformed(" + buttonTitle + ")");
-//				processKeytoButtonBinding(buttonTitle);
-//				//core.processAction(buttonTitle);
-//			}
-//		};
 
 		// On initialise la JFrame
 		this.setTitle("Calculette");
@@ -195,22 +90,9 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener {
 		// Goudy Bookletter 1911
 		for (int indexCell = 0; indexCell < kNames.length; indexCell++) {
 			kButtons[indexCell] = new JButton(kNames[indexCell]);
-			// key assocation
-//			kButtons[indexCell] = new JButton(kNames[indexCell])  {
-//				@Override
-//				protected boolean processKeyBinding(KeyStroke ks, KeyEvent ke, int i, boolean bln) {
-//					boolean b = super.processKeyBinding(ks, ke, i, bln);
-//					//if (b && ks.getKeyCode() == kKeys[indexCell])
-//					if (b)
-//						requestFocusInWindow();
-//					return b;
-//				}
-//			};
-//			kButtons[indexCell].getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(kKeys[indexCell], 0), kNames[indexCell]);
-//			kButtons[indexCell].getActionMap().put(kNames[indexCell], keybindAction);
 			kButtons[indexCell].setPreferredSize(dim);
-			kButtons[indexCell].setFont(kFont);
 			kButtons[indexCell].addActionListener(this); // l'observer est notre fenetre
+			kButtons[indexCell].setFont(kFont);
 			keyboardPan.add(kButtons[indexCell]);
 		}
 
@@ -218,44 +100,31 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener {
 		Dimension aDim = new Dimension(55, 30);
 		// Font aFont = new Font("Dialog", Font.BOLD, 12); //PLAIN , ITALIC,
 		for (int indexCell = 0; indexCell < aNames.length; indexCell++) {
-			if (aNames[indexCell].equals("MS"))
-				indexMS = indexCell;
 			aButtons[indexCell] = new JButton(aNames[indexCell]);
-			// key assocation
-//			aButtons[indexCell] = new JButton(aNames[indexCell])  {
-//				@Override
-//				protected boolean processKeyBinding(KeyStroke ks, KeyEvent ke, int i, boolean bln) {
-//					boolean b = super.processKeyBinding(ks, ke, i, bln);
-//					//if (b && ks.getKeyCode() == kKeys[indexCell])
-//					if (b)
-//						requestFocusInWindow();
-//					return b;
-//				}
-//			};
-//			aButtons[indexCell].getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(aKeys[indexCell], 0), aNames[indexCell]);
-//			aButtons[indexCell].getActionMap().put(aNames[indexCell], keybindAction);
 			aButtons[indexCell].setPreferredSize(aDim);
-			// aButtons[indexCell].setFont(kFont);
 			aButtons[indexCell].addActionListener(this); // l'observer est notre fenetre
+			// aButtons[indexCell].setFont(aFont);
 			ActionPan.add(aButtons[indexCell]);
 		}
+		//set index of MS button
+		if (aLabels.contains("MS"))
+			indexMS = aLabels.indexOf("MS");
 
 		// On initialise le JLabel
+		// Font dispo :
 		// Font police = new Font("DS-digital", Font.TYPE1_FONT, 20);
 		// Font police = new Font("Segment14", Font.PLAIN, 25);
-		// Font police = new Font("ledfont-sharp", Font.BOLD , 20);
 		Font police = null;
 		File fileFont;
 		try {
 			// BufferedWriter writer;
 			String workingDir = new File("").getAbsolutePath();
-			logger.println("workingDir: " + workingDir);
+			logger.logging("workingDir: " + workingDir);
 			// URL resource = Fenetre.class.getResource("/");
-			// logger.println("resource: "+resource);
-			// logger.println("resource.getPath(): "+resource.getPath());
+			// logger.logging("resource.getPath(): "+resource.getPath());
 			String resourceDir = this.getClass().getResource("/").getPath();
 			String classPath = resourceDir.substring(0, resourceDir.lastIndexOf("/bin"));
-			logger.println("classPath: " + classPath);
+			logger.logging("classPath: " + classPath);
 
 			// fileFont = new File("font/ledfont-sharp-Regular.otf");
 			// fileFont = new File("font/PixelOperator-Bold.ttf");
@@ -263,7 +132,7 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener {
 			// fileFont = new File("font/PixelOperatorHBSC.ttf");
 			// fileFont = new File("font/PixelOperator.ttf");
 			fileFont = new File(classPath + "/" + "font/PixelOperator.ttf");
-			logger.println("fileFont: " + fileFont.getAbsolutePath());
+			logger.logging("fileFont: " + fileFont.getAbsolutePath());
 			police = Font.createFont(Font.TRUETYPE_FONT, fileFont);
 			// police = police.deriveFont((float)20);
 			// police = police.deriveFont(Font.BOLD, (float)25);
@@ -304,7 +173,7 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener {
 		this.calculette.addObserver(new Observer() {
 
 			public void update(String pString) {
-				// logger.println("-> Observer is informed by Observed to run an update !");
+				// logger.logging("-> Observer is informed by Observed to run an update !");
 				label.setText((pString.isEmpty() ? "0" : pString));
 			}
 
@@ -328,22 +197,21 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent ke) {
-		// System.out.println("Key pressed code=" + ke.getKeyCode() + ", extended code="
+		// logger.logging("Key pressed code=" + ke.getKeyCode() + ", extended code="
 		// + ke.getExtendedKeyCode() +
 		// ", char=" + ke.getKeyChar() + ", text=" +
 		// KeyEvent.getKeyText(ke.getKeyCode()));
-		// System.out.println("\tke=" + ke);
+		// logger.logging("\tke=" + ke);
 		int keyCode = ke.getKeyCode();
 		char keyChar = ke.getKeyChar();
 		String keyText = KeyEvent.getKeyText(ke.getKeyCode());
-		System.out.println(
-				">> KeyListener.keyCode(" + keyCode + ").keyPressed(" + keyText + ").keyChar(" + keyChar + ")");
 		String keyPressed = "";
 		switch (keyChar) {
 		// KeyboardPan
+		case '.': // case .
+		case ',': // case .
 		case ';': // case .
 		case ':': // case .
-		case '.': // case .
 			keyPressed = ".";
 			break;
 		case '0':
@@ -398,7 +266,8 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener {
 			break;
 		default:
 			switch(keyCode) {
-			case 54: // case keycode 54 -> keypressed 6
+			case 54: // case keycode 54 pressed(-)-> keypressed 6
+			case 45: // case keycode 45 pressed(-)-> keypressed 6
 				keyPressed = "6";
 				break;
 			case 39: // case keycode 39 pressed (right) -> +
@@ -414,6 +283,9 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener {
 			case 40 : // case keycode 40 Pressed (down) -> /
 				keyPressed = "/";
 				break;
+			case 10 : // case keycode 10 Pressed (CR) -> =
+				keyPressed = "=";
+				break;
 			case 33: // case keycode 33 Pressed (page up) -> MC
 				keyPressed = "MC";
 				break;
@@ -426,23 +298,24 @@ public class Fenetre extends JFrame implements ActionListener, KeyListener {
 			case 127: // case keycode 127 Pressed (Suppr) -> Suppr
 				keyPressed = "C";
 				break;
-			default:
+			default: //logger.logging(">> --> not binded");
 				return;
 			}
 			break;
 		}
-		System.out.println(">> keyPressed replace by : " + keyPressed + "");
+		logger.logging(">> KeyListener.keyCode(" + keyCode + ").keyPressed(" + keyText + ").keyChar(" + keyChar + ")");
+		logger.logging(">> keyPressed replaced by : " + keyPressed + "");
 		processKeytoButtonBinding(keyPressed);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		// TODO Auto-generated method stub
-		logger.println(">> actionPerformed");
+		logger.logging(">> actionPerformed");
 		// JButton buttonHit= (JButton) arg0.getSource();
 		// String buttonTitle = buttonHit.getName();
 		String buttonTitle = ae.getActionCommand();
-		logger.println(">> buttonTitle= " + buttonTitle);
+		logger.logging(">> buttonTitle= " + buttonTitle);
 		calculette.processAction(buttonTitle);
 		this.requestFocus();
 	}

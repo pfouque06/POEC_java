@@ -3,13 +3,14 @@ package maCalculette;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
+import logger.Logger;
 import observer.Observed;
 import observer.Observer;
 
 public class Calculette implements Observed {
 
 	// logger
-	PrintStream logger = Main.logger;
+	Logger logger = Main.logger;
 	
 	// Nos variables d'environnement locales
 	private String input = "", display = "", action = "", memory = "";
@@ -43,7 +44,7 @@ public class Calculette implements Observed {
 
 	public void processAction(String buttonTitle) {
 		// TODO Auto-generated method stub
-		logger.println(">> processAction : " + buttonTitle);
+		logger.logging(">> processAction : " + buttonTitle);
 		switch (buttonTitle) {
 		case ".":
 		case "0":
@@ -80,7 +81,7 @@ public class Calculette implements Observed {
 
 	private void keyboardClic(String buttonTitle) {
 		// TODO Auto-generated method stub
-		logger.println(">> keyboardClic : " + buttonTitle);
+		logger.logging(">> keyboardClic : " + buttonTitle);
 		switch (buttonTitle) {
 		case ".":
 			if (input.isEmpty())
@@ -120,13 +121,13 @@ public class Calculette implements Observed {
 		}
 		display = input; // update Frame
 		this.updateObserver();
-		logger.println(">> display= " + display + " value= " + value + " action= " + action + " input=" + input);
+		logger.logging(">> display= " + display + " value= " + value + " action= " + action + " input=" + input);
 
 	}
 
 	private void actionClic(String buttonTitle) {
 		// TODO Auto-generated method stub
-		logger.println(">> actionClic");
+		logger.logging(">> actionClic");
 
 		if (input.isEmpty())
 			input = display; // set input to display if empty is null
@@ -146,7 +147,7 @@ public class Calculette implements Observed {
 		} else { // operande has been previously set
 			if (!input.isEmpty()) { // process calculation is numeric input is provided
 				double newValue = Double.valueOf(input);
-				logger.print(">> process : " + value + " " + action + " " + newValue);
+				logger.logging(">> process : " + value + " " + action + " " + newValue);
 				switch (action) {
 				case "+":
 					value += newValue;
@@ -159,7 +160,7 @@ public class Calculette implements Observed {
 					break;
 				case "/":
 					if (input.matches("^0+\\.*0*")) {
-						logger.println(">> actionClic : ERROR : Div/0");
+						logger.logging(">> actionClic : ERROR : Div/0");
 						display = "Error"; // update Frame
 						break;
 					}
@@ -167,14 +168,14 @@ public class Calculette implements Observed {
 					break;
 				case "%":
 					if (input.matches("^0+\\.*0*")) {
-						logger.println(">> actionClic : ERROR : Div/0");
+						logger.logging(">> actionClic : ERROR : Div/0");
 						display = "Error"; // update Frame
 						break;
 					}
 					value %= newValue;
 					break;
 				}
-				logger.println(" = " + value);
+				logger.logging(">>\t= " + value);
 				if (!display.equals("Error"))
 					display = String.valueOf(value); // update Frame
 			}
@@ -186,13 +187,13 @@ public class Calculette implements Observed {
 			}
 		}
 		this.updateObserver();
-		logger.println(">> display= " + display + " value= " + value + " action= " + action + " input=" + input);
+		logger.logging(">> display= " + display + " value= " + value + " action= " + action + " input=" + input);
 
 	}
 
 	private void memoryClic(String buttonTitle) {
 		// TODO Auto-generated method stub
-		logger.println(">> memoryClic : memory= " + memory + " memSet= " + memSet);
+		logger.logging(">> memoryClic : memory= " + memory + " memSet= " + memSet);
 		switch (buttonTitle) {
 		case "MC": // Reset memory
 			memory = "";
@@ -213,15 +214,15 @@ public class Calculette implements Observed {
 			break;
 		}
 		this.updateObserver();
-		logger.println(">> memory= " + memory + " memSet= " + memSet);
-		logger.println(">> display= " + display + " value= " + value + " action= " + action + " input=" + input);
+		logger.logging(">> memory= " + memory + " memSet= " + memSet);
+		logger.logging(">> display= " + display + " value= " + value + " action= " + action + " input=" + input);
 	}
 
 	private void resetClic() {
 		// TODO Auto-generated method stub
-		logger.println(">> resetClic");
+		logger.logging(">> resetClic");
 		this.init();
-		logger.println(">> display= " + display + " value= " + value + " action= " + action + " input=" + input);
+		logger.logging(">> display= " + display + " value= " + value + " action= " + action + " input=" + input);
 	}
 
 	// Ajoute un observateur à la liste
@@ -237,7 +238,7 @@ public class Calculette implements Observed {
 	// Avertit les observateurs que l'objet observable a changé
 	// et invoque la méthode update() de chaque observateur
 	public void updateObserver() {
-		// logger.println("observed inform observer to run an update!! ->");
+		// logger.logging("observed inform observer to run an update!! ->");
 		for (Observer obs : this.listObserver) {
 			obs.update(display);
 			obs.update(memSet);
