@@ -26,7 +26,7 @@ public class Main {
 			// creation de la requete (statement)
 			Statement statement = connexion.createStatement();
 			// prepare request (request)
-			String request = "SELECT * FROM Personne";
+			String request = "SELECT * FROM personne";
 			// excecution de la requete :
 			// statement.executeQuery() -> select
 			// statement.executeUpdate() -> insert, update, delete, create

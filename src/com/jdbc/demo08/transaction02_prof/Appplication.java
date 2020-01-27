@@ -18,6 +18,7 @@ public class Appplication {
 		System.out.println("Veuillez rentrez un prénom, svp");
 		String p = sc.next();
 		Personne personne = new Personne(n, p);
+		personneDaoImpl.show();
 		
 		System.out.println();
 		System.out.println("------------------Modifier une personne---------------------");	
