@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_231" class="java.beans.XMLDecoder">
+ <object class="XMLserial.exo01.User">
+  <void property="login">
+   <string>newAdmin</string>
+  </void>
+ </object>
+</java>

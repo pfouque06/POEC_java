@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_231" class="java.beans.XMLDecoder">
+ <object class="java.util.ArrayList">
+  <void method="add">
+   <object class="XMLserial.exo02.Personne" id="Personne0">
+    <void property="adresses">
+     <void method="add">
+      <object class="XMLserial.exo02.Adresse">
+       <void property="codePostal">
+        <string>CP tata</string>
+       </void>
+       <void property="rue">
+        <string>rue tata</string>
+       </void>
+       <void property="ville">
+        <string>Ville tata</string>
+       </void>
+      </object>
+     </void>
+     <void method="add">
+      <object class="XMLserial.exo02.Adresse">
+       <void property="codePostal">
+        <string>CP zboub</string>
+       </void>
+       <void property="rue">
+        <string>rue zboub</string>
+       </void>
+       <void property="ville">
+        <string>Ville Zboub</string>
+       </void>
+      </object>
+     </void>
+    </void>
+    <void property="nom">
+     <string>tata</string>
+    </void>
+    <void property="prenom">
+     <string>tata</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="XMLserial.exo02.Personne" id="Personne1">
+    <void property="adresses">
+     <void method="add">
+      <object class="XMLserial.exo02.Adresse">
+       <void property="codePostal">
+        <string>CP titi</string>
+       </void>
+       <void property="rue">
+        <string>rue titi</string>
+       </void>
+       <void property="ville">
+        <string>Ville titi</string>
+       </void>
+      </object>
+     </void>
+    </void>
+    <void property="nom">
+     <string>titi</string>
+    </void>
+    <void property="prenom">
+     <string>titi</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="XMLserial.exo02.Personne" id="Personne2">
+    <void property="adresses">
+     <void method="add">
+      <object class="XMLserial.exo02.Adresse">
+       <void property="codePostal">
+        <string>CP toto</string>
+       </void>
+       <void property="rue">
+        <string>rue toto</string>
+       </void>
+       <void property="ville">
+        <string>Ville TOTO</string>
+       </void>
+      </object>
+     </void>
+    </void>
+    <void property="nom">
+     <string>toto</string>
+    </void>
+    <void property="prenom">
+     <string>toto</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="XMLserial.exo02.Personne" id="Personne3">
+    <void property="adresses">
+     <void method="add">
+      <object class="XMLserial.exo02.Adresse">
+       <void property="codePostal">
+        <string>CP tutu</string>
+       </void>
+       <void property="rue">
+        <string>rue tutu</string>
+       </void>
+       <void property="ville">
+        <string>Ville tutu</string>
+       </void>
+      </object>
+     </void>
+    </void>
+    <void property="nom">
+     <string>tutu</string>
+    </void>
+    <void property="prenom">
+     <string>tutu</string>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>
