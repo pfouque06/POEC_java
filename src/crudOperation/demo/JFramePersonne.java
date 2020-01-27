@@ -130,7 +130,11 @@ public class JFramePersonne extends javax.swing.JFrame {
 //	    	table.getColumnModel().getColumn(index).setCellRenderer(render);
 		table.setShowGrid(false);
 		scrollPane.setViewportView(table);
-		btnSelect.doClick();
+
+		// fill table
+		//btnSelect.doClick();
+		fillData();
+
 
 	}
 
@@ -152,7 +156,6 @@ public class JFramePersonne extends javax.swing.JFrame {
 			PreparedStatement pst = c.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
 			pst.setInt(1, Integer.valueOf(this.tfNum.getText()));
 			pst.executeUpdate();
-			ResultSet rs = pst.getGeneratedKeys();
 
 			// reset Text Fields
 			resetTF();
@@ -161,10 +164,7 @@ public class JFramePersonne extends javax.swing.JFrame {
 			JOptionPane.showMessageDialog(null, "Deleted!");
 
 			// select
-			sql = "select * from personne";
-			pst = c.prepareStatement(sql);
-			rs = pst.executeQuery();
-			table.setModel(DbUtils.resultSetToTableModel(rs));
+			fillData();
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -192,7 +192,6 @@ public class JFramePersonne extends javax.swing.JFrame {
 			pst.setString(2, this.tfPrenom.getText());
 			pst.setInt(3, Integer.valueOf(this.tfNum.getText()));
 			pst.executeUpdate();
-			ResultSet rs = pst.getGeneratedKeys();
 
 			// reset Text Fields
 			resetTF();
@@ -201,10 +200,7 @@ public class JFramePersonne extends javax.swing.JFrame {
 			JOptionPane.showMessageDialog(null, "Updated!");
 
 			// select
-			sql = "select * from personne";
-			pst = c.prepareStatement(sql);
-			rs = pst.executeQuery();
-			table.setModel(DbUtils.resultSetToTableModel(rs));
+			fillData();
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -231,7 +227,6 @@ public class JFramePersonne extends javax.swing.JFrame {
 			pst.setString(1, this.tfNom.getText());
 			pst.setString(2, this.tfPrenom.getText());
 			pst.executeUpdate();
-			ResultSet rs = pst.getGeneratedKeys();
 
 			// reset Text Fields
 			resetTF();
@@ -240,10 +235,7 @@ public class JFramePersonne extends javax.swing.JFrame {
 			JOptionPane.showMessageDialog(null, "Inserted");
 
 			// select
-			sql = "select * from personne";
-			pst = c.prepareStatement(sql);
-			rs = pst.executeQuery();
-			table.setModel(DbUtils.resultSetToTableModel(rs));
+			fillData();
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
