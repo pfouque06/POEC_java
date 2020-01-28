@@ -22,9 +22,9 @@ public class Main {
 	"F:h:help:usage:-:prints this help message:true:",
 	"F:L:log:logging:boolean:set logging mode (to console/terminal):true:",
 	};
-	public static GetOpts options = new GetOpts(optionArray);
+	public static GetOpts options;
 
-	public static boolean setOpts(String[] pArgs) {
+	public static boolean setOptions(String[] pArgs) {
 		// System.out.println("optionTable=\n"+options.optionTable_toString());
 		// parse options pArgs
 		if (!options.setOptionList(pArgs)) {
@@ -33,15 +33,15 @@ public class Main {
 		}
 		// System.out.println("optionList=\n"+options.optionList_toString());
 		// set options
-		if (!setOpts(options.getOptionList())) {
-			options.getUsage(System.out); // use STDOUT when help is requested
+		if (!setOptions(options.getOptionList())) {
+			System.out.println(options.getUsage()); // display usage is requested
 			return false;
 		}
 		// System.out.println("options:" + optsToString());
 		return true;
 	}
 
-	public static boolean setOpts(LinkedHashSet<String[]> pList) {
+	public static boolean setOptions(LinkedHashSet<String[]> pList) {
 		// Loop on each options of pList
 		for (String[] fields : pList) {
 			// System.out.println("fields="+fields.toString() );
@@ -69,14 +69,17 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		// parse args :
-		//initiate getOpts class and parse args according to optionArray
-		if (!setOpts(args))
+		// initiate getOpts options and parse args :
+		options = new GetOpts(optionArray, args);
+		// check options status and set options according to args parsing
+		if ( ! setOptions(options.getOptionList()) ) {
+			System.out.println(options.getUsage()); // display usage is requested
 			return;
+		}
 
 		// init logger
 		logger = new Logger(logging ? "syso" : "");
-		logger.logging(optsToString());
+		logger.logging("options:" + optsToString());
 
 		Fenetre frame = new Fenetre();
 	}
