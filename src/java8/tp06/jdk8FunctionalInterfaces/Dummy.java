@@ -3,14 +3,23 @@ package java8.tp06.jdk8FunctionalInterfaces;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 public class Dummy {
 
+	public static void afficher(String... array) {
+		for(String a : array) 
+			System.out.println(a);
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		afficher();
+		afficher("toto");
+		afficher("toto", "titi", "tata", "tutu");
+		
 		// using anonyme class
 		/*
 		Thread t2 = new Thread(new Runnable() {
@@ -62,10 +71,12 @@ public class Dummy {
 
 		System.out.println();
 		machines3.sort(cmasc);
+		//Collections.sort(machines3, cmasc);
 		machines3.forEach(System.out::println);
 		
 		System.out.println();
-		machines3.sort(cmdes);
+		//machines3.sort(cmdes);
+		Collections.sort(machines3, cmdes);
 		machines3.forEach(System.out::println);
 	}
 
